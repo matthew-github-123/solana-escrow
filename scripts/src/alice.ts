@@ -95,7 +95,7 @@ const alice = async () => {
     createEscrowAccountIx,
     initEscrowIx
   );
-  console.log("Sending Alice's transaction...");
+  console.log("Sending Pet Owner transaction...");
   await connection.sendTransaction(
     tx,
     [aliceKeypair, tempXTokenAccountKeypair, escrowKeypair],
@@ -156,23 +156,23 @@ const alice = async () => {
   writePublicKey(escrowKeypair.publicKey, "escrow");
   console.table([
     {
-      "Alice Token Account X": await getTokenBalance(
+      "Pet Owner DogeCoin Account X": await getTokenBalance(
         aliceXTokenAccountPubkey,
         connection
       ),
-      "Alice Token Account Y": await getTokenBalance(
+      "Pet Owner DogeCoin Account Y": await getTokenBalance(
         aliceYTokenAccountPubkey,
         connection
       ),
-      "Bob Token Account X": await getTokenBalance(
+      "Pet Sitter DogeCoin Account X": await getTokenBalance(
         getPublicKey("bob_x"),
         connection
       ),
-      "Bob Token Account Y": await getTokenBalance(
+      "Pet Sitter DogeCoin Account Y": await getTokenBalance(
         getPublicKey("bob_y"),
         connection
       ),
-      "Temporary Token Account X": await getTokenBalance(
+      "Temporary DogeCoin Account X": await getTokenBalance(
         tempXTokenAccountKeypair.publicKey,
         connection
       ),

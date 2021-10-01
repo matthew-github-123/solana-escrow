@@ -94,7 +94,7 @@ const bob = async () => {
     getTokenBalance(bobXTokenAccountPubkey, connection),
   ]);
 
-  console.log("Sending Bob's transaction...");
+  console.log("Sending Pet Sitter transaction...");
   await connection.sendTransaction(
     new Transaction().add(exchangeInstruction),
     [bobKeypair],
@@ -150,13 +150,13 @@ const bob = async () => {
   );
   console.table([
     {
-      "Alice Token Account X": await getTokenBalance(
+      "Pet Owner DogeCoin Account X": await getTokenBalance(
         getPublicKey("alice_x"),
         connection
       ),
-      "Alice Token Account Y": newAliceYbalance,
-      "Bob Token Account X": newBobXbalance,
-      "Bob Token Account Y": await getTokenBalance(
+      "Pet Owner DogeCoin Account Y": newAliceYbalance,
+      "Pet Sitter DogeCoin Account X": newBobXbalance,
+      "Pet Sitter DogeCoin Account Y": await getTokenBalance(
         bobYTokenAccountPubkey,
         connection
       ),
