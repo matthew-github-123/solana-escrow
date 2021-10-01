@@ -58,10 +58,10 @@ const setup = async () => {
   const clientKeypair = getKeypair("id");
 
   const connection = new Connection("http://localhost:8899", "confirmed");
-  console.log("Requesting SOL for Alice...");
+  console.log("Requesting SOL for Pet Owner...");
   // some networks like the local network provide an airdrop function (mainnet of course does not)
   await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
-  console.log("Requesting SOL for Bob...");
+  console.log("Requesting SOL for Pet Sitter...");
   await connection.requestAirdrop(bobPublicKey, LAMPORTS_PER_SOL * 10);
 
   const [mintX, aliceTokenAccountForX, bobTokenAccountForX] = await setupMint(
@@ -71,7 +71,7 @@ const setup = async () => {
     bobPublicKey,
     clientKeypair
   );
-  console.log("Sending 50X to Alice's X TokenAccount...");
+  console.log("Sending 50X to Pet Owner X DogeCoin Account...");
   await mintX.mintTo(aliceTokenAccountForX, clientKeypair.publicKey, [], 50);
 
   const [mintY, aliceTokenAccountForY, bobTokenAccountForY] = await setupMint(
@@ -81,25 +81,25 @@ const setup = async () => {
     bobPublicKey,
     clientKeypair
   );
-  console.log("Sending 50Y to Bob's Y TokenAccount...");
+  console.log("Sending 50Y to Pet Sitter Y DogeCoin Account...");
   await mintY.mintTo(bobTokenAccountForY, clientKeypair.publicKey, [], 50);
 
   console.log("✨Setup complete✨\n");
   console.table([
     {
-      "Alice Token Account X": await getTokenBalance(
+      "Pet Owner DogeCoin Account X": await getTokenBalance(
         aliceTokenAccountForX,
         connection
       ),
-      "Alice Token Account Y": await getTokenBalance(
+      "Pet Owner DogeCoin Account Y": await getTokenBalance(
         aliceTokenAccountForY,
         connection
       ),
-      "Bob Token Account X": await getTokenBalance(
+      "Pet Sitter DogeCoin Account X": await getTokenBalance(
         bobTokenAccountForX,
         connection
       ),
-      "Bob Token Account Y": await getTokenBalance(
+      "Pet Sitter DogeCoin Account Y": await getTokenBalance(
         bobTokenAccountForY,
         connection
       ),
