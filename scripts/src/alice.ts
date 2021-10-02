@@ -32,6 +32,7 @@ const alice = async () => {
 
   const tempXTokenAccountKeypair = new Keypair();
   const connection = new Connection("http://localhost:8899", "confirmed");
+  console.log("creating temp account ...");
   const createTempTokenAccountIx = SystemProgram.createAccount({
     programId: TOKEN_PROGRAM_ID,
     space: AccountLayout.span,
@@ -41,12 +42,14 @@ const alice = async () => {
     fromPubkey: aliceKeypair.publicKey,
     newAccountPubkey: tempXTokenAccountKeypair.publicKey,
   });
+  console.log("initialise temp account ...");
   const initTempAccountIx = Token.createInitAccountInstruction(
     TOKEN_PROGRAM_ID,
     XTokenMintPubkey,
     tempXTokenAccountKeypair.publicKey,
     aliceKeypair.publicKey
   );
+  console.log("transfer token x to temp account ...");
   const transferXTokensToTempAccIx = Token.createTransferInstruction(
     TOKEN_PROGRAM_ID,
     aliceXTokenAccountPubkey,
@@ -56,6 +59,7 @@ const alice = async () => {
     terms.bobExpectedAmount
   );
   const escrowKeypair = new Keypair();
+  console.log("creating escrow account ...");
   const createEscrowAccountIx = SystemProgram.createAccount({
     space: ESCROW_ACCOUNT_DATA_LAYOUT.span,
     lamports: await connection.getMinimumBalanceForRentExemption(
@@ -65,6 +69,7 @@ const alice = async () => {
     newAccountPubkey: escrowKeypair.publicKey,
     programId: escrowProgramId,
   });
+  console.log("initialising escrow account ...");
   const initEscrowIx = new TransactionInstruction({
     programId: escrowProgramId,
     keys: [
@@ -88,6 +93,7 @@ const alice = async () => {
     ),
   });
 
+  console.log("creating the transaction ...");
   const tx = new Transaction().add(
     createTempTokenAccountIx,
     initTempAccountIx,
@@ -105,9 +111,11 @@ const alice = async () => {
   // sleep to allow time to update
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
+  console.log("getting account info of escrow Account ...");
   const escrowAccount = await connection.getAccountInfo(
     escrowKeypair.publicKey
   );
+  console.log("getting escrow account info ...complete ...")
 
   if (escrowAccount === null || escrowAccount.data.length === 0) {
     logError("Escrow state account has not been initialized properly");
