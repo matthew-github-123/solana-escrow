@@ -172,6 +172,11 @@ const alice = async () => {
     //    aliceYTokenAccountPubkey,
     //    connection
     //  ),
+    "Contract": await getTokenBalance(
+      tempXTokenAccountKeypair.publicKey,
+      connection
+    ),
+
       "Bob Token Account X": await getTokenBalance(
         getPublicKey("bob_x"),
         connection
@@ -180,10 +185,6 @@ const alice = async () => {
     //    getPublicKey("bob_y"),
     //    connection
     //  ),
-      "Temporary Token Account X": await getTokenBalance(
-        tempXTokenAccountKeypair.publicKey,
-        connection
-      ),
     },
   ]);
 

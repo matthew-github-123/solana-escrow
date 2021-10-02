@@ -96,6 +96,7 @@ const setup = async () => {
       //  aliceTokenAccountForY,
       //  connection
       //),
+      "Contract": 0,
       "Bob Token Account X": await getTokenBalance(
         bobTokenAccountForX,
         connection
