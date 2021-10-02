@@ -73,16 +73,17 @@ const setup = async () => {
   );
   console.log("Sending 50X to Alice's X TokenAccount...");
   await mintX.mintTo(aliceTokenAccountForX, clientKeypair.publicKey, [], 50);
+  await mintX.mintTo(bobTokenAccountForX, clientKeypair.publicKey, [], 10);
 
-  const [mintY, aliceTokenAccountForY, bobTokenAccountForY] = await setupMint(
-    "Y",
-    connection,
-    alicePublicKey,
-    bobPublicKey,
-    clientKeypair
-  );
-  console.log("Sending 50Y to Bob's Y TokenAccount...");
-  await mintY.mintTo(bobTokenAccountForY, clientKeypair.publicKey, [], 50);
+  //const [mintY, aliceTokenAccountForY, bobTokenAccountForY] = await setupMint(
+  //  "Y",
+  //  connection,
+  //  alicePublicKey,
+  //  bobPublicKey,
+  //  clientKeypair
+  //);
+  //console.log("Sending 50Y to Bob's Y TokenAccount...");
+  //await mintY.mintTo(bobTokenAccountForY, clientKeypair.publicKey, [], 50);
 
   console.log("✨Setup complete✨\n");
   console.table([
@@ -91,18 +92,18 @@ const setup = async () => {
         aliceTokenAccountForX,
         connection
       ),
-      "Alice Token Account Y": await getTokenBalance(
-        aliceTokenAccountForY,
-        connection
-      ),
+      //"Alice Token Account Y": await getTokenBalance(
+      //  aliceTokenAccountForY,
+      //  connection
+      //),
       "Bob Token Account X": await getTokenBalance(
         bobTokenAccountForX,
         connection
       ),
-      "Bob Token Account Y": await getTokenBalance(
-        bobTokenAccountForY,
-        connection
-      ),
+      //"Bob Token Account Y": await getTokenBalance(
+      //  bobTokenAccountForY,
+      //  connection
+      //),
     },
   ]);
   console.log("");
