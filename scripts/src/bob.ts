@@ -118,7 +118,7 @@ const bob = async () => {
   }
 
   const newAliceXbalance = await getTokenBalance(
-    aliceYTokenAccountPubkey,
+    aliceXTokenAccountPubkey,
     connection
   );
 
@@ -155,7 +155,7 @@ const bob = async () => {
         connection
       ),
       "Alice Token Account X": newAliceXbalance,
-      "Bob Token Account X": newBobXbalance,
+      "Bob Token Account X Balance": newBobXbalance,
       "Bob Token Account X": await getTokenBalance(
         bobXTokenAccountPubkey,
         connection
