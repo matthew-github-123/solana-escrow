@@ -13,23 +13,30 @@ export const writePublicKey = (publicKey: PublicKey, name: string) => {
     `./keys/${name}_pub.json`,
     JSON.stringify(publicKey.toString())
   );
+  console.log("write PublicKey ...");
 };
 
-export const getPublicKey = (name: string) =>
+export const getPublicKey = (name: string) => {
   new PublicKey(
     JSON.parse(fs.readFileSync(`./keys/${name}_pub.json`) as unknown as string)
   );
+  console.log("get PublicKey ...");
+};
 
-export const getPrivateKey = (name: string) =>
+export const getPrivateKey = (name: string) => {
   Uint8Array.from(
     JSON.parse(fs.readFileSync(`./keys/${name}.json`) as unknown as string)
   );
+  console.log("write PublicKey ...");
+};
 
-export const getKeypair = (name: string) =>
+export const getKeypair = (name: string) => {
   new Keypair({
     publicKey: getPublicKey(name).toBytes(),
     secretKey: getPrivateKey(name),
   });
+  console.log("get Keypair ...");
+};
 
 export const getProgramId = () => {
   try {
@@ -38,6 +45,7 @@ export const getProgramId = () => {
     logError("Given programId is missing or incorrect");
     process.exit(1);
   }
+console.log("get Program ID ...");
 };
 
 export const getTerms = (): {
