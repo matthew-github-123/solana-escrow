@@ -53,15 +53,22 @@ const setupMint = async (
 };
 
 const setup = async () => {
+  console.log("SETUP ----- part 1");
+  console.log("getting public key for alice");
   const alicePublicKey = getPublicKey("alice");
+  console.log("getting public key for bob");
   const bobPublicKey = getPublicKey("bob");
+  console.log("generating client keypair");
+  //what is this client keypair for?
   const clientKeypair = getKeypair("id");
 
+  console.log("Establishing the connection...");
   const connection = new Connection("http://localhost:8899", "confirmed");
-  console.log("Requesting SOL for Alice...");
+  console.log("Airdrop - Requesting SOL for Alice...");
   // some networks like the local network provide an airdrop function (mainnet of course does not)
   await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
-  console.log("Requesting SOL for Bob...");
+  console.log("lamports per sol is: ", LAMPORTS_PER_SOL);
+  console.log("Airdrop - Requesting SOL for Bob...");
   await connection.requestAirdrop(bobPublicKey, LAMPORTS_PER_SOL * 10);
 
   const [mintX, aliceTokenAccountForX, bobTokenAccountForX] = await setupMint(
