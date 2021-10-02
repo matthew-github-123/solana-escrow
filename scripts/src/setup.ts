@@ -81,6 +81,7 @@ const setup = async () => {
   console.log("Sending 50X to Alice's X TokenAccount...");
   await mintX.mintTo(aliceTokenAccountForX, clientKeypair.publicKey, [], 50);
 
+  //2nd mint - do not need
   const [mintY, aliceTokenAccountForY, bobTokenAccountForY] = await setupMint(
     "Y",
     connection,
