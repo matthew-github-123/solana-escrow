@@ -154,7 +154,7 @@ const bob = async () => {
         getPublicKey("alice_x"),
         connection
       ),
-      "Alice Token Account X": newAliceXbalance,
+      "Alice Token Account X Balance": newAliceXbalance,
       "Bob Token Account X Balance": newBobXbalance,
       "Bob Token Account X": await getTokenBalance(
         bobXTokenAccountPubkey,
