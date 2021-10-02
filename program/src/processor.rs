@@ -48,12 +48,11 @@ impl Processor {
 
         let temp_token_account = next_account_info(account_info_iter)?;
 
-        let token_to_receive_account = next_account_info(account_info_iter)?;
-        msg!("account recieve owner: {:?}", token_to_receive_account.owner);
-        msg!("spl token owner: {:?}", spl_token::id());
-        if *token_to_receive_account.owner != spl_token::id() {
-            return Err(ProgramError::IncorrectProgramId);
-        }
+        //let token_to_receive_account = next_account_info(account_info_iter)?;
+        //msg!("account recieve owner: {:?}", token_to_receive_account);
+        //if *token_to_receive_account.owner != spl_token::id() {
+        //    return Err(ProgramError::IncorrectProgramId);
+        //}
 
         let escrow_account = next_account_info(account_info_iter)?;
         let rent = &Rent::from_account_info(next_account_info(account_info_iter)?)?;
