@@ -142,7 +142,7 @@ const alice = async () => {
   } else if (
     !new PublicKey(
       decodedEscrowState.initializerReceivingTokenAccountPubkey
-    ).equals(aliceYTokenAccountPubkey)
+    ).equals(aliceXTokenAccountPubkey)
   ) {
     logError(
       "initializerReceivingTokenAccountPubkey has not been set correctly / not been set to Alice's Y public key"
@@ -168,18 +168,18 @@ const alice = async () => {
         aliceXTokenAccountPubkey,
         connection
       ),
-      "Alice Token Account Y": await getTokenBalance(
-        aliceYTokenAccountPubkey,
-        connection
-      ),
+    //  "Alice Token Account Y": await getTokenBalance(
+    //    aliceYTokenAccountPubkey,
+    //    connection
+    //  ),
       "Bob Token Account X": await getTokenBalance(
         getPublicKey("bob_x"),
         connection
       ),
-      "Bob Token Account Y": await getTokenBalance(
-        getPublicKey("bob_y"),
-        connection
-      ),
+    //  "Bob Token Account Y": await getTokenBalance(
+    //    getPublicKey("bob_y"),
+    //    connection
+    //  ),
       "Temporary Token Account X": await getTokenBalance(
         tempXTokenAccountKeypair.publicKey,
         connection
