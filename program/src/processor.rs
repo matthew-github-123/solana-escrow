@@ -49,7 +49,7 @@ impl Processor {
         let temp_token_account = next_account_info(account_info_iter)?;
 
         let token_to_receive_account = next_account_info(account_info_iter)?;
-        msg!("next account:", token_to_receive_account);
+        msg!("next account: {}", token_to_receive_account);
         if *token_to_receive_account.owner != spl_token::id() {
             return Err(ProgramError::IncorrectProgramId);
         }
