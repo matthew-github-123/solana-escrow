@@ -10,5 +10,6 @@ fn process_instruction(
     accounts: &[AccountInfo],
     instruction_data: &[u8],
 ) -> ProgramResult {
+    msg!("Starting processing ... ");
     Processor::process(program_id, accounts, instruction_data)
 }
