@@ -137,11 +137,11 @@ impl Processor {
             return Err(ProgramError::InvalidAccountData);
         }
 
-        if escrow_info.initializer_token_to_receive_account_pubkey
-            != *initializers_token_to_receive_account.key
-        {
-            return Err(ProgramError::InvalidAccountData);
-        }
+        //if escrow_info.initializer_token_to_receive_account_pubkey
+        //    != *initializers_token_to_receive_account.key
+        //{
+        //    return Err(ProgramError::InvalidAccountData);
+        //}
 
         let token_program = next_account_info(account_info_iter)?;
 
