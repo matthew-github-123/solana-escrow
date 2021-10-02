@@ -26,7 +26,7 @@ const alice = async () => {
   const terms = getTerms();
 
   const aliceXTokenAccountPubkey = getPublicKey("alice_x");
-  const aliceYTokenAccountPubkey = getPublicKey("alice_y");
+  //const aliceYTokenAccountPubkey = getPublicKey("alice_y");
   const XTokenMintPubkey = getPublicKey("mint_x");
   const aliceKeypair = getKeypair("alice");
 
@@ -80,7 +80,7 @@ const alice = async () => {
         isWritable: true,
       },
       {
-        pubkey: aliceYTokenAccountPubkey,
+        pubkey: aliceXTokenAccountPubkey,
         isSigner: false,
         isWritable: false,
       },
