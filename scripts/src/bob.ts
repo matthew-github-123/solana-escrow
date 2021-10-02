@@ -136,14 +136,14 @@ const bob = async () => {
     connection
   );
 
-  if (newBobXbalance !== bobXbalance + terms.bobExpectedAmount) {
-    logError(
-      `Bob's X balance should be ${
-        bobXbalance + terms.bobExpectedAmount
-      } but is ${newBobXbalance}`
-    );
-    process.exit(1);
-  }
+//  if (newBobXbalance !== bobXbalance + terms.bobExpectedAmount) {
+//    logError(
+//      `Bob's X balance should be ${
+//        bobXbalance + terms.bobExpectedAmount
+//      } but is ${newBobXbalance}`
+//    );
+//    process.exit(1);
+//  }
 
   console.log(
     "✨Trade successfully executed. All temporary accounts closed✨\n"
