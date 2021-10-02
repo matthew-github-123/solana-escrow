@@ -20,7 +20,7 @@ import {
 const bob = async () => {
   const bobKeypair = getKeypair("bob");
   const bobXTokenAccountPubkey = getPublicKey("bob_x");
-  const bobYTokenAccountPubkey = getPublicKey("bob_y");
+  //const bobYTokenAccountPubkey = getPublicKey("bob_y");
   const escrowStateAccountPubkey = getPublicKey("escrow");
   const escrowProgramId = getProgramId();
   const terms = getTerms();
@@ -47,7 +47,7 @@ const bob = async () => {
     XTokenTempAccountPubkey: new PublicKey(
       decodedEscrowLayout.initializerTempTokenAccountPubkey
     ),
-    initializerYTokenAccount: new PublicKey(
+    initializerXTokenAccount: new PublicKey(
       decodedEscrowLayout.initializerReceivingTokenAccountPubkey
     ),
     expectedAmount: new BN(decodedEscrowLayout.expectedAmount, 10, "le"),
@@ -65,7 +65,7 @@ const bob = async () => {
     ),
     keys: [
       { pubkey: bobKeypair.publicKey, isSigner: true, isWritable: false },
-      { pubkey: bobYTokenAccountPubkey, isSigner: false, isWritable: true },
+      { pubkey: bobXTokenAccountPubkey, isSigner: false, isWritable: true },
       { pubkey: bobXTokenAccountPubkey, isSigner: false, isWritable: true },
       {
         pubkey: escrowState.XTokenTempAccountPubkey,
@@ -78,7 +78,7 @@ const bob = async () => {
         isWritable: true,
       },
       {
-        pubkey: escrowState.initializerYTokenAccount,
+        pubkey: escrowState.initializerXTokenAccount,
         isSigner: false,
         isWritable: true,
       },
@@ -88,9 +88,9 @@ const bob = async () => {
     ],
   });
 
-  const aliceYTokenAccountPubkey = getPublicKey("alice_y");
-  const [aliceYbalance, bobXbalance] = await Promise.all([
-    getTokenBalance(aliceYTokenAccountPubkey, connection),
+  const aliceXTokenAccountPubkey = getPublicKey("alice_x");
+  const [aliceXbalance, bobXbalance] = await Promise.all([
+    getTokenBalance(aliceXTokenAccountPubkey, connection),
     getTokenBalance(bobXTokenAccountPubkey, connection),
   ]);
 
@@ -117,16 +117,16 @@ const bob = async () => {
     process.exit(1);
   }
 
-  const newAliceYbalance = await getTokenBalance(
+  const newAliceXbalance = await getTokenBalance(
     aliceYTokenAccountPubkey,
     connection
   );
 
-  if (newAliceYbalance !== aliceYbalance + terms.aliceExpectedAmount) {
+  if (newAliceXbalance !== aliceXbalance + terms.aliceExpectedAmount) {
     logError(
-      `Alice's Y balance should be ${
-        aliceYbalance + terms.aliceExpectedAmount
-      } but is ${newAliceYbalance}`
+      `Alice's X balance should be ${
+        aliceXbalance + terms.aliceExpectedAmount
+      } but is ${newAliceXbalance}`
     );
     process.exit(1);
   }
@@ -154,10 +154,10 @@ const bob = async () => {
         getPublicKey("alice_x"),
         connection
       ),
-      "Alice Token Account Y": newAliceYbalance,
+      "Alice Token Account X": newAliceXbalance,
       "Bob Token Account X": newBobXbalance,
-      "Bob Token Account Y": await getTokenBalance(
-        bobYTokenAccountPubkey,
+      "Bob Token Account X": await getTokenBalance(
+        bobXTokenAccountPubkey,
         connection
       ),
     },
