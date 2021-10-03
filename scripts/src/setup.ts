@@ -108,7 +108,10 @@ const setup = async () => {
       //  aliceTokenAccountForY,
       //  connection
       //),
-      "Contract": 0,
+      "Contract": await getTokenBalance(
+        tempXTokenAccountKeypair.publicKey,
+        connection
+      ),
     //  "Bob Token Account X": await getTokenBalance(
     //    bobTokenAccountForX,
     //    connection
@@ -125,7 +128,10 @@ const setup = async () => {
         adamTokenAccountForX,
         connection
       ),
-      "Contract": 0,
+      "Contract": await getTokenBalance(
+        tempadamXTokenAccountKeypair.publicKey,
+        connection
+      ),
     },
   ]);
   console.log("");
