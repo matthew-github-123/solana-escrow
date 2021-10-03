@@ -119,6 +119,8 @@ impl Processor {
             TokenAccount::unpack(&pdas_temp_token_account.data.borrow())?;
         let (pda, nonce) = Pubkey::find_program_address(&[b"escrow"], program_id);
 
+        msg!("Amount expected by taker {:?}", amount_expected_by_taker);
+
         if amount_expected_by_taker != pdas_temp_token_account_info.amount {
             return Err(EscrowError::ExpectedAmountMismatch.into());
         }
