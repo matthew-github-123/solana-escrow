@@ -10,6 +10,7 @@
     "setup-alice": "npm run compile && node build/setup.js && node build/alice.js",
     "alice": "npm run compile && node build/alice.js",
     "bob": "npm run compile && node build/bob.js",
+    "adam":"npm run compile && node build/adam.js",
     "alice-bob": "npm run compile && node build/alice.js && node build/bob.js",
     "all": "npm run compile && node build/setup.js && node build/alice.js && node build/adam.js && node build/bob.js"
   },
