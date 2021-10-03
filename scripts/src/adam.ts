@@ -117,7 +117,7 @@ const adam = async () => {
   );
   console.log("getting escrow account info ...complete ...")
 
-  if (escrowAccount === null || escrowAdamAccount.data.length === 0) {
+  if (escrowAdamAccount === null || escrowAdamAccount.data.length === 0) {
     logError("Escrow state account has not been initialized properly");
     process.exit(1);
   }
