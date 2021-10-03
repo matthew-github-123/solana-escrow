@@ -34,6 +34,16 @@ const bob = async () => {
     process.exit(1);
   }
 
+  console.table([
+    {
+      "Bob Token Account X": await getTokenBalance(
+        bobXTokenAccountPubkey,
+        connection
+      ),
+    },
+  ]);
+  console.log("");
+
   const encodedEscrowState = escrowAccount.data;
   const decodedEscrowLayout = ESCROW_ACCOUNT_DATA_LAYOUT.decode(
     encodedEscrowState
