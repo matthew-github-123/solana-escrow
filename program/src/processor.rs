@@ -39,6 +39,8 @@ impl Processor {
         amount: u64,
         program_id: &Pubkey,
     ) -> ProgramResult {
+        msg!("amount to give: {:?}", amount);
+
         let account_info_iter = &mut accounts.iter();
         let initializer = next_account_info(account_info_iter)?;
 
