@@ -1,4 +1,5 @@
 {
   "aliceExpectedAmount": 3,
-  "bobExpectedAmount": 5
+  "bobExpectedAmount": 5,
+  "adamExpectedAmount": 2
 }

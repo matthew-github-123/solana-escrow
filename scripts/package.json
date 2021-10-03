@@ -11,7 +11,7 @@
     "alice": "npm run compile && node build/alice.js",
     "bob": "npm run compile && node build/bob.js",
     "alice-bob": "npm run compile && node build/alice.js && node build/bob.js",
-    "all": "npm run compile && node build/setup.js && node build/alice.js && node build/bob.js"
+    "all": "npm run compile && node build/setup.js && node build/alice.js && node build/adam.js && node build/bob.js"
   },
   "author": "",
   "license": "ISC",
