@@ -134,6 +134,16 @@ const bob = async () => {
   // sleep to allow time to update
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
+  console.table([
+    {
+      "Bob Token Account X": await getTokenBalance(
+        bobXTokenAccountPubkey,
+        connection
+      ),
+    },
+  ]);
+  console.log("");
+
   if ((await connection.getAccountInfo(escrowStateAccountPubkey)) !== null) {
     logError("Escrow account has not been closed");
     process.exit(1);
