@@ -54,7 +54,7 @@ const setupMint = async (
   const adamTokenAccount = await mint.createAccount(adamPublicKey);
   writePublicKey(adamTokenAccount, `adam_${name.toLowerCase()}`);
 
-  return [mint, aliceTokenAccount, bobTokenAccount];
+  return [mint, aliceTokenAccount, bobTokenAccount, adamTokenAccount];
 };
 
 const setup = async () => {
