@@ -121,6 +121,16 @@ const bob = async () => {
     { skipPreflight: false, preflightCommitment: "confirmed" }
   );
 
+  console.table([
+    {
+      "Bob Token Account X": await getTokenBalance(
+        bobXTokenAccountPubkey,
+        connection
+      ),
+    },
+  ]);
+  console.log("");
+
   // sleep to allow time to update
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
