@@ -104,6 +104,16 @@ const bob = async () => {
     getTokenBalance(bobXTokenAccountPubkey, connection),
   ]);
 
+  console.table([
+    {
+      "Bob Token Account X": await getTokenBalance(
+        bobXTokenAccountPubkey,
+        connection
+      ),
+    },
+  ]);
+  console.log("");
+
   console.log("Sending Bob's transaction...");
   await connection.sendTransaction(
     new Transaction().add(exchangeInstruction),
