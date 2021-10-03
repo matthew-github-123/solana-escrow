@@ -177,10 +177,10 @@ const alice = async () => {
       connection
     ),
 
-      "Bob Token Account X": await getTokenBalance(
-        getPublicKey("bob_x"),
-        connection
-      ),
+  //    "Bob Token Account X": await getTokenBalance(
+  //      getPublicKey("bob_x"),
+  //      connection
+  //    ),
     //  "Bob Token Account Y": await getTokenBalance(
     //    getPublicKey("bob_y"),
     //    connection

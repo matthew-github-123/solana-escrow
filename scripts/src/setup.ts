@@ -35,8 +35,9 @@ const setupMint = async (
   connection: Connection,
   alicePublicKey: PublicKey,
   bobPublicKey: PublicKey,
+  adamPublicKey: PublicKey,
   clientKeypair: Signer
-): Promise<[Token, PublicKey, PublicKey]> => {
+): Promise<[Token, PublicKey, PublicKey, PublicKey]> => {
   console.log(`Creating Mint ${name}...`);
   const mint = await createMint(connection, clientKeypair);
   writePublicKey(mint.publicKey, `mint_${name.toLowerCase()}`);
@@ -49,12 +50,17 @@ const setupMint = async (
   const bobTokenAccount = await mint.createAccount(bobPublicKey);
   writePublicKey(bobTokenAccount, `bob_${name.toLowerCase()}`);
 
+  console.log(`Creating Adam TokenAccount for ${name}...`);
+  const adamTokenAccount = await mint.createAccount(adamPublicKey);
+  writePublicKey(adamTokenAccount, `adam_${name.toLowerCase()}`);
+
   return [mint, aliceTokenAccount, bobTokenAccount];
 };
 
 const setup = async () => {
   const alicePublicKey = getPublicKey("alice");
   const bobPublicKey = getPublicKey("bob");
+  const adamPublicKey = getPublicKey("adam");
   const clientKeypair = getKeypair("id");
 
   const connection = new Connection("http://localhost:8899", "confirmed");
@@ -63,17 +69,21 @@ const setup = async () => {
   await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
   console.log("Requesting SOL for Bob...");
   await connection.requestAirdrop(bobPublicKey, LAMPORTS_PER_SOL * 10);
+  console.log("Requesting SOL for Adam...");
+  await connection.requestAirdrop(adamPublicKey, LAMPORTS_PER_SOL * 10);
 
-  const [mintX, aliceTokenAccountForX, bobTokenAccountForX] = await setupMint(
+  const [mintX, aliceTokenAccountForX, bobTokenAccountForX, adamTokenAccountForX] = await setupMint(
     "X",
     connection,
     alicePublicKey,
     bobPublicKey,
+    adamPublicKey,
     clientKeypair
   );
   console.log("Sending 50X to Alice's X TokenAccount...");
   await mintX.mintTo(aliceTokenAccountForX, clientKeypair.publicKey, [], 50);
   await mintX.mintTo(bobTokenAccountForX, clientKeypair.publicKey, [], 10);
+  await mintX.mintTo(adamTokenAccountForX, clientKeypair.publicKey, [], 40);
 
   //const [mintY, aliceTokenAccountForY, bobTokenAccountForY] = await setupMint(
   //  "Y",
@@ -92,19 +102,30 @@ const setup = async () => {
         aliceTokenAccountForX,
         connection
       ),
+
+
       //"Alice Token Account Y": await getTokenBalance(
       //  aliceTokenAccountForY,
       //  connection
       //),
       "Contract": 0,
-      "Bob Token Account X": await getTokenBalance(
-        bobTokenAccountForX,
-        connection
-      ),
+    //  "Bob Token Account X": await getTokenBalance(
+    //    bobTokenAccountForX,
+    //    connection
+    //  ),
       //"Bob Token Account Y": await getTokenBalance(
       //  bobTokenAccountForY,
       //  connection
       //),
+    },
+  ]);
+  console.table([
+    {
+      "Adam Token Account X": await getTokenBalance(
+        adamTokenAccountForX,
+        connection
+      ),
+      "Contract": 0,
     },
   ]);
   console.log("");
