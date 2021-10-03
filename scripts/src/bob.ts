@@ -201,6 +201,11 @@ const bob = async () => {
         bobXTokenAccountPubkey,
         connection
       ),
+
+      "Bob Token Account X Test": await getTokenBalance(
+        getPublicKey("bob_x"),
+        connection
+      ),
     },
   ]);
   console.log("");
