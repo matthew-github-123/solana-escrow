@@ -170,6 +170,8 @@ impl Processor {
 
         let pda_account = next_account_info(account_info_iter)?;
 
+        msg!("Transfer PDA ammount ... {:?}", pdas_temp_token_account_info.amount);
+
         let transfer_to_taker_ix = spl_token::instruction::transfer(
             token_program.key,
             pdas_temp_token_account.key,
