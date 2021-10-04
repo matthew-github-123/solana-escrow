@@ -106,8 +106,6 @@ const bob = async () => {
     getTokenBalance(bobXTokenAccountPubkey, connection),
   ]);
 
-  console.log("");
-
   console.log("Bob accepts Alice contract");
   console.log("Bob walks Alice dog");
   console.log("Alice approves of dog walk");
@@ -184,7 +182,8 @@ const bob = async () => {
 //  }
 
   console.log(
-    "✨Trade successfully executed. All temporary accounts closed✨\n"
+    "✨Trade successfully executed"
+    //" All temporary accounts closed✨\n"
   );
   console.table([
     {
