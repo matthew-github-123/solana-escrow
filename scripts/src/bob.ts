@@ -18,7 +18,7 @@ import {
 } from "./utils";
 
 const bob = async () => {
-  console.log("-----bob.ts-----");
+  //console.log("-----bob.ts-----");
   const bobKeypair = getKeypair("bob");
   const bobXTokenAccountPubkey = getPublicKey("bob_x");
   //const bobYTokenAccountPubkey = getPublicKey("bob_y");
@@ -35,6 +35,7 @@ const bob = async () => {
     process.exit(1);
   }
 
+  console.log("Bob opening account");
   console.table([
     {
       "Bob Token Account X": await getTokenBalance(
@@ -105,45 +106,41 @@ const bob = async () => {
     getTokenBalance(bobXTokenAccountPubkey, connection),
   ]);
 
-  console.table([
-    {
-      "Bob Token Account X": await getTokenBalance(
-        bobXTokenAccountPubkey,
-        connection
-      ),
-    },
-  ]);
   console.log("");
 
-  console.log("Sending Bob's transaction...");
+  console.log("Bob accepts Alice contract");
+  console.log("Bob walks Alice dog");
+  console.log("Alice approves of dog walk");
+  console.log("Alice pays Bob $2");
+  //console.log("Sending Bob's transaction...");
   await connection.sendTransaction(
     new Transaction().add(exchangeInstruction),
     [bobKeypair],
     { skipPreflight: false, preflightCommitment: "confirmed" }
   );
 
-  console.table([
-    {
-      "Bob Token Account X": await getTokenBalance(
-        bobXTokenAccountPubkey,
-        connection
-      ),
-    },
-  ]);
-  console.log("");
+  //console.table([
+  //  {
+  //    "Bob Token Account X": await getTokenBalance(
+  //      bobXTokenAccountPubkey,
+  //      connection
+  //    ),
+  //  },
+  //]);
+  //console.log("");
 
   // sleep to allow time to update
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  console.table([
-    {
-      "Bob Token Account X": await getTokenBalance(
-        bobXTokenAccountPubkey,
-        connection
-      ),
-    },
-  ]);
-  console.log("");
+  //console.table([
+  //  {
+  //    "Bob Token Account X": await getTokenBalance(
+  //      bobXTokenAccountPubkey,
+  //      connection
+  //    ),
+  //  },
+  //]);
+  //console.log("");
 
   if ((await connection.getAccountInfo(escrowStateAccountPubkey)) !== null) {
     logError("Escrow account has not been closed");
@@ -172,10 +169,10 @@ const bob = async () => {
   //  process.exit(1);
   //}
 
-  const newBobXbalance = await getTokenBalance(
-    bobXTokenAccountPubkey,
-    connection
-  );
+//  const newBobXbalance = await getTokenBalance(
+//    bobXTokenAccountPubkey,
+//    connection
+//  );
 
 //  if (newBobXbalance !== bobXbalance + terms.bobExpectedAmount) {
 //    logError(
@@ -203,10 +200,10 @@ const bob = async () => {
         connection
       ),
 
-      "Bob Token Account X Test": await getTokenBalance(
-        getPublicKey("bob_x"),
-        connection
-      ),
+    //  "Bob Token Account X Test": await getTokenBalance(
+    //    getPublicKey("bob_x"),
+    //    connection
+    //  ),
     },
   ]);
   console.log("");

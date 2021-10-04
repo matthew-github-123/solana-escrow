@@ -58,7 +58,7 @@ const setupMint = async (
 };
 
 const setup = async () => {
-  console.log("-----setup.ts-----");
+//  console.log("-----setup.ts-----");
   const alicePublicKey = getPublicKey("alice");
   const bobPublicKey = getPublicKey("bob");
   const adamPublicKey = getPublicKey("adam");
@@ -97,12 +97,13 @@ const setup = async () => {
   //await mintY.mintTo(bobTokenAccountForY, clientKeypair.publicKey, [], 50);
 
 //  console.log("✨Setup complete✨\n");
-//  console.table([
-//    {
-//      "Alice Token Account X": await getTokenBalance(
-//        aliceTokenAccountForX,
-//        connection
-//      ),
+console.log("Alice opening account");
+  console.table([
+   {
+      "Alice Token Account X": await getTokenBalance(
+       aliceTokenAccountForX,
+        connection
+      ),
 
 
       //"Alice Token Account Y": await getTokenBalance(
@@ -118,17 +119,18 @@ const setup = async () => {
       //  bobTokenAccountForY,
       //  connection
       //),
-//    },
-//  ]);
-//  console.table([
-//    {
-//      "Adam Token Account X": await getTokenBalance(
-//        adamTokenAccountForX,
-//        connection
-//      ),
+    },
+  ]);
+  console.log("Adam opening account");
+  console.table([
+    {
+      "Adam Token Account X": await getTokenBalance(
+        adamTokenAccountForX,
+        connection
+      ),
   //    "Contract": 0,
-//    },
-//  ]);
+   },
+  ]);
 //  console.log("");
 };
 

@@ -159,9 +159,9 @@ const adam = async () => {
     );
     process.exit(1);
   }
-  console.log(
-    `✨Escrow successfully initialized. Adam is offering ${terms.bobExpectedAmount}X for ${terms.adamExpectedAmount}Y✨\n`
-  );
+  //console.log(
+  //  `✨Escrow successfully initialized. Adam is offering ${terms.bobExpectedAmount}X for ${terms.adamExpectedAmount}Y✨\n`
+  //);
   writePublicKey(escrowAdamKeypair.publicKey, "escrow");
 
   console.log("Adam initiates contract: $2 payment for his cat to be walked")
