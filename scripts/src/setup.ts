@@ -38,19 +38,19 @@ const setupMint = async (
   adamPublicKey: PublicKey,
   clientKeypair: Signer
 ): Promise<[Token, PublicKey, PublicKey, PublicKey]> => {
-  console.log(`Creating Mint ${name}...`);
+//  console.log(`Creating Mint ${name}...`);
   const mint = await createMint(connection, clientKeypair);
   writePublicKey(mint.publicKey, `mint_${name.toLowerCase()}`);
 
-  console.log(`Creat ing Alice TokenAccount for ${name}...`);
+//  console.log(`Creating Alice TokenAccount for ${name}...`);
   const aliceTokenAccount = await mint.createAccount(alicePublicKey);
   writePublicKey(aliceTokenAccount, `alice_${name.toLowerCase()}`);
 
-  console.log(`Creating Bob TokenAccount for ${name}...`);
+//  console.log(`Creating Bob TokenAccount for ${name}...`);
   const bobTokenAccount = await mint.createAccount(bobPublicKey);
   writePublicKey(bobTokenAccount, `bob_${name.toLowerCase()}`);
 
-  console.log(`Creating Adam TokenAccount for ${name}...`);
+//  console.log(`Creating Adam TokenAccount for ${name}...`);
   const adamTokenAccount = await mint.createAccount(adamPublicKey);
   writePublicKey(adamTokenAccount, `adam_${name.toLowerCase()}`);
 
@@ -65,12 +65,12 @@ const setup = async () => {
   const clientKeypair = getKeypair("id");
 
   const connection = new Connection("http://localhost:8899", "confirmed");
-  console.log("Requesting SOL for Alice...");
+//  console.log("Requesting SOL for Alice...");
   // some networks like the local network provide an airdrop function (mainnet of course does not)
   await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
-  console.log("Requesting SOL for Bob...");
+//  console.log("Requesting SOL for Bob...");
   await connection.requestAirdrop(bobPublicKey, LAMPORTS_PER_SOL * 10);
-  console.log("Requesting SOL for Adam...");
+//  console.log("Requesting SOL for Adam...");
   await connection.requestAirdrop(adamPublicKey, LAMPORTS_PER_SOL * 10);
 
   const [mintX, aliceTokenAccountForX, bobTokenAccountForX, adamTokenAccountForX] = await setupMint(
@@ -81,7 +81,7 @@ const setup = async () => {
     adamPublicKey,
     clientKeypair
   );
-  console.log("Sending 50X to Alice's X TokenAccount...");
+//  console.log("Sending 50X to Alice's X TokenAccount...");
   await mintX.mintTo(aliceTokenAccountForX, clientKeypair.publicKey, [], 50);
   await mintX.mintTo(bobTokenAccountForX, clientKeypair.publicKey, [], 10);
   await mintX.mintTo(adamTokenAccountForX, clientKeypair.publicKey, [], 40);
@@ -96,13 +96,13 @@ const setup = async () => {
   //console.log("Sending 50Y to Bob's Y TokenAccount...");
   //await mintY.mintTo(bobTokenAccountForY, clientKeypair.publicKey, [], 50);
 
-  console.log("✨Setup complete✨\n");
-  console.table([
-    {
-      "Alice Token Account X": await getTokenBalance(
-        aliceTokenAccountForX,
-        connection
-      ),
+//  console.log("✨Setup complete✨\n");
+//  console.table([
+//    {
+//      "Alice Token Account X": await getTokenBalance(
+//        aliceTokenAccountForX,
+//        connection
+//      ),
 
 
       //"Alice Token Account Y": await getTokenBalance(
@@ -118,18 +118,18 @@ const setup = async () => {
       //  bobTokenAccountForY,
       //  connection
       //),
-    },
-  ]);
-  console.table([
-    {
-      "Adam Token Account X": await getTokenBalance(
-        adamTokenAccountForX,
-        connection
-      ),
+//    },
+//  ]);
+//  console.table([
+//    {
+//      "Adam Token Account X": await getTokenBalance(
+//        adamTokenAccountForX,
+//        connection
+//      ),
   //    "Contract": 0,
-    },
-  ]);
-  console.log("");
+//    },
+//  ]);
+//  console.log("");
 };
 
 setup();

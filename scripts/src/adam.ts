@@ -22,7 +22,7 @@ import {
 } from "./utils";
 
 const adam = async () => {
-  console.log("-----adam.ts-----");
+  //console.log("-----adam.ts-----");
   const escrowProgramId = getProgramId();
   const terms = getTerms();
 
@@ -33,7 +33,7 @@ const adam = async () => {
 
   const tempadamXTokenAccountKeypair = new Keypair();
   const connection = new Connection("http://localhost:8899", "confirmed");
-  console.log("creating adam temp account ...");
+  //console.log("creating adam temp account ...");
   const createTempAdamTokenAccountIx = SystemProgram.createAccount({
     programId: TOKEN_PROGRAM_ID,
     space: AccountLayout.span,
@@ -43,14 +43,14 @@ const adam = async () => {
     fromPubkey: adamKeypair.publicKey,
     newAccountPubkey: tempadamXTokenAccountKeypair.publicKey,
   });
-  console.log("initialise adam temp account ...");
+  //console.log("initialise adam temp account ...");
   const initTempAdamAccountIx = Token.createInitAccountInstruction(
     TOKEN_PROGRAM_ID,
     XTokenMintPubkey,
     tempadamXTokenAccountKeypair.publicKey,
     adamKeypair.publicKey
   );
-  console.log("transfer token x to adam temp account ...");
+  //console.log("transfer token x to adam temp account ...");
   const transferAdamXTokensToTempAccIx = Token.createTransferInstruction(
     TOKEN_PROGRAM_ID,
     adamXTokenAccountPubkey,
@@ -60,7 +60,7 @@ const adam = async () => {
     terms.bobExpectedAmount
   );
   const escrowAdamKeypair = new Keypair();
-  console.log("creating adam escrow account ...");
+  //console.log("creating adam escrow account ...");
   const createAdamEscrowAccountIx = SystemProgram.createAccount({
     space: ESCROW_ACCOUNT_DATA_LAYOUT.span,
     lamports: await connection.getMinimumBalanceForRentExemption(
@@ -70,7 +70,7 @@ const adam = async () => {
     newAccountPubkey: escrowAdamKeypair.publicKey,
     programId: escrowProgramId,
   });
-  console.log("initialising escrow account ...");
+  //console.log("initialising escrow account ...");
   const initAdamEscrowIx = new TransactionInstruction({
     programId: escrowProgramId,
     keys: [
@@ -94,7 +94,7 @@ const adam = async () => {
     ),
   });
 
-  console.log("creating the Adam transaction ...");
+  //console.log("creating the Adam transaction ...");
   const tx = new Transaction().add(
     createTempAdamTokenAccountIx,
     initTempAdamAccountIx,
@@ -102,7 +102,7 @@ const adam = async () => {
     createAdamEscrowAccountIx,
     initAdamEscrowIx
   );
-  console.log("Sending Adam's transaction...");
+  //console.log("Sending Adam's transaction...");
   await connection.sendTransaction(
     tx,
     [adamKeypair, tempadamXTokenAccountKeypair, escrowAdamKeypair],
@@ -112,11 +112,11 @@ const adam = async () => {
   // sleep to allow time to update
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  console.log("getting account info of escrow Account ...");
+  //console.log("getting account info of escrow Account ...");
   const escrowAdamAccount = await connection.getAccountInfo(
     escrowAdamKeypair.publicKey
   );
-  console.log("getting escrow account info ...complete ...")
+  //console.log("getting escrow account info ...complete ...")
 
   if (escrowAdamAccount === null || escrowAdamAccount.data.length === 0) {
     logError("Escrow state account has not been initialized properly");
@@ -163,6 +163,9 @@ const adam = async () => {
     `✨Escrow successfully initialized. Adam is offering ${terms.bobExpectedAmount}X for ${terms.adamExpectedAmount}Y✨\n`
   );
   writePublicKey(escrowAdamKeypair.publicKey, "escrow");
+
+  console.log("Adam initiates contract: $2 payment for his cat to be walked")
+
   console.table([
     {
       "Adam Token Account X": await getTokenBalance(

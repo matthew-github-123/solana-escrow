@@ -22,7 +22,7 @@ import {
 } from "./utils";
 
 const alice = async () => {
-  console.log("-----alice.ts-----");
+//  console.log("-----alice.ts-----");
   const escrowProgramId = getProgramId();
   const terms = getTerms();
 
@@ -33,7 +33,7 @@ const alice = async () => {
 
   const tempXTokenAccountKeypair = new Keypair();
   const connection = new Connection("http://localhost:8899", "confirmed");
-  console.log("creating temp account ...");
+//  console.log("creating temp account ...");
   const createTempTokenAccountIx = SystemProgram.createAccount({
     programId: TOKEN_PROGRAM_ID,
     space: AccountLayout.span,
@@ -43,14 +43,14 @@ const alice = async () => {
     fromPubkey: aliceKeypair.publicKey,
     newAccountPubkey: tempXTokenAccountKeypair.publicKey,
   });
-  console.log("initialise temp account ...");
+//  console.log("initialise temp account ...");
   const initTempAccountIx = Token.createInitAccountInstruction(
     TOKEN_PROGRAM_ID,
     XTokenMintPubkey,
     tempXTokenAccountKeypair.publicKey,
     aliceKeypair.publicKey
   );
-  console.log("transfer token x to temp account ...");
+//  console.log("transfer token x to temp account ...");
   const transferXTokensToTempAccIx = Token.createTransferInstruction(
     TOKEN_PROGRAM_ID,
     aliceXTokenAccountPubkey,
@@ -60,7 +60,7 @@ const alice = async () => {
     terms.bobExpectedAmount
   );
   const escrowKeypair = new Keypair();
-  console.log("creating escrow account ...");
+//  console.log("creating escrow account ...");
   const createEscrowAccountIx = SystemProgram.createAccount({
     space: ESCROW_ACCOUNT_DATA_LAYOUT.span,
     lamports: await connection.getMinimumBalanceForRentExemption(
@@ -70,7 +70,7 @@ const alice = async () => {
     newAccountPubkey: escrowKeypair.publicKey,
     programId: escrowProgramId,
   });
-  console.log("initialising escrow account ...");
+  //console.log("initialising escrow account ...");
   const initEscrowIx = new TransactionInstruction({
     programId: escrowProgramId,
     keys: [
@@ -94,7 +94,7 @@ const alice = async () => {
     ),
   });
 
-  console.log("creating the transaction ...");
+  //console.log("creating the transaction ...");
   const tx = new Transaction().add(
     createTempTokenAccountIx,
     initTempAccountIx,
@@ -102,7 +102,7 @@ const alice = async () => {
     createEscrowAccountIx,
     initEscrowIx
   );
-  console.log("Sending Alice's transaction...");
+  //console.log("Sending Alice's transaction...");
   await connection.sendTransaction(
     tx,
     [aliceKeypair, tempXTokenAccountKeypair, escrowKeypair],
@@ -112,11 +112,11 @@ const alice = async () => {
   // sleep to allow time to update
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
-  console.log("getting account info of escrow Account ...");
+  //console.log("getting account info of escrow Account ...");
   const escrowAccount = await connection.getAccountInfo(
     escrowKeypair.publicKey
   );
-  console.log("getting escrow account info ...complete ...")
+  //console.log("getting escrow account info ...complete ...")
 
   if (escrowAccount === null || escrowAccount.data.length === 0) {
     logError("Escrow state account has not been initialized properly");
@@ -163,6 +163,9 @@ const alice = async () => {
     `✨Escrow successfully initialized. Alice is offering ${terms.bobExpectedAmount}X for ${terms.aliceExpectedAmount}Y✨\n`
   );
   writePublicKey(escrowKeypair.publicKey, "escrow");
+
+  console.log("Alice initiates contract: $2 payment for her dog to be walked")
+
   console.table([
     {
       "Alice Token Account X": await getTokenBalance(
