@@ -22,6 +22,7 @@ import {
 } from "./utils";
 
 const alice = async () => {
+  console.log("-----alice.ts-----");
   const escrowProgramId = getProgramId();
   const terms = getTerms();
 

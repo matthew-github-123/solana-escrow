@@ -58,6 +58,7 @@ const setupMint = async (
 };
 
 const setup = async () => {
+  console.log("-----setup.ts-----");
   const alicePublicKey = getPublicKey("alice");
   const bobPublicKey = getPublicKey("bob");
   const adamPublicKey = getPublicKey("adam");

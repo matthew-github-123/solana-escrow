@@ -100,7 +100,7 @@ impl Processor {
 
         //////////////////////////////////////////////////////////////
 
-        msg!("5. Token Program");
+        msg!("5. Token Program -> transferring ownership");
         let token_program = next_account_info(account_info_iter)?;
         let owner_change_ix = spl_token::instruction::set_authority(
             token_program.key,
@@ -132,16 +132,29 @@ impl Processor {
     ) -> ProgramResult {
         msg!("-----START ESCROW EXCHANGE-----");
         let account_info_iter = &mut accounts.iter();
+
+        //////////////////////////////////////////////////////////////
+
+        msg!("0. Bob Wallet");
         let taker = next_account_info(account_info_iter)?;
 
         if !taker.is_signer {
             return Err(ProgramError::MissingRequiredSignature);
         }
 
+        //////////////////////////////////////////////////////////////
+
+        msg!("1. Bob Temp Acct - give");
         let takers_sending_token_account = next_account_info(account_info_iter)?;
 
+        //////////////////////////////////////////////////////////////
+
+        msg!("2. Bob Temp Acct - take");
         let takers_token_to_receive_account = next_account_info(account_info_iter)?;
 
+        //////////////////////////////////////////////////////////////
+
+        msg("3.PDAs temp token account - will close after trade complete - belonged to Alice")
         let pdas_temp_token_account = next_account_info(account_info_iter)?;
         let pdas_temp_token_account_info =
             TokenAccount::unpack(&pdas_temp_token_account.data.borrow())?;
@@ -153,8 +166,22 @@ impl Processor {
             return Err(EscrowError::ExpectedAmountMismatch.into());
         }
 
+        //////////////////////////////////////////////////////////////
+
+        msg!("4. Alice Wallet");
+
         let initializers_main_account = next_account_info(account_info_iter)?;
+
+        //////////////////////////////////////////////////////////////
+
+        msg!("5. Alice Temp Acct - take");
+
         let initializers_token_to_receive_account = next_account_info(account_info_iter)?;
+
+        //////////////////////////////////////////////////////////////
+
+        msg!("6. Escrow Acct -> Trade data");
+
         let escrow_account = next_account_info(account_info_iter)?;
 
         let escrow_info = Escrow::unpack(&escrow_account.data.borrow())?;
@@ -173,6 +200,10 @@ impl Processor {
             return Err(ProgramError::InvalidAccountData);
         }
 
+        //////////////////////////////////////////////////////////////
+
+        msg!("7. Token Program -> transferring ownership");
+
         let token_program = next_account_info(account_info_iter)?;
 
         let transfer_to_initializer_ix = spl_token::instruction::transfer(
@@ -184,6 +215,7 @@ impl Processor {
             escrow_info.expected_amount,
         )?;
         msg!("Calling the token program to transfer tokens to the escrow's initializer...");
+        msg!("Amount given to initaliser - Alice {:?}", escrow_info.expected_amount);
         invoke(
             &transfer_to_initializer_ix,
             &[
@@ -193,6 +225,8 @@ impl Processor {
                 token_program.clone(),
             ],
         )?;
+
+        msg!("8. PDA Acct");
 
         let pda_account = next_account_info(account_info_iter)?;
 
@@ -206,7 +240,9 @@ impl Processor {
             &[&pda],
             pdas_temp_token_account_info.amount,
         )?;
+        msg!("----Final Transfer----");
         msg!("Calling the token program to transfer tokens to the taker...");
+        msg!("Amount given to taker - Bob {:?}", pdas_temp_token_account_info.amount);
         invoke_signed(
             &transfer_to_taker_ix,
             &[

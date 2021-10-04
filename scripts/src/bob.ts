@@ -18,6 +18,7 @@ import {
 } from "./utils";
 
 const bob = async () => {
+  console.log("-----bob.ts-----");
   const bobKeypair = getKeypair("bob");
   const bobXTokenAccountPubkey = getPublicKey("bob_x");
   //const bobYTokenAccountPubkey = getPublicKey("bob_y");
