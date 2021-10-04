@@ -154,7 +154,7 @@ impl Processor {
 
         //////////////////////////////////////////////////////////////
 
-        msg("3.PDAs temp token account - will close after trade complete - belonged to Alice");
+        msg!("3.PDAs temp token account - will close after trade complete - belonged to Alice");
         let pdas_temp_token_account = next_account_info(account_info_iter)?;
         let pdas_temp_token_account_info =
             TokenAccount::unpack(&pdas_temp_token_account.data.borrow())?;
