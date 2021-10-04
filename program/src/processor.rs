@@ -59,7 +59,7 @@ impl Processor {
 
         msg!("1. Alice Temp Acct - give");
         let temp_token_account = next_account_info(account_info_iter)?;
-        msg!("Alice give account: {:?}", temp_token_account)
+        msg!("Alice give account: {:?}", temp_token_account);
 
         //////////////////////////////////////////////////////////////
 
