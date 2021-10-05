@@ -31,7 +31,8 @@ const alice = async () => {
   const aliceKeypair = getKeypair("alice");
 
   const tempXTokenAccountKeypair = new Keypair();
-  const connection = new Connection("http://localhost:8899", "confirmed");
+  const connection = new Connection("https://api.testnet.solana.com", "confirmed");
+  //const connection = new Connection("http://localhost:8899", "confirmed");
   const createTempTokenAccountIx = SystemProgram.createAccount({
     programId: TOKEN_PROGRAM_ID,
     space: AccountLayout.span,

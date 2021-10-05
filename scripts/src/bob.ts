@@ -25,7 +25,8 @@ const bob = async () => {
   const escrowProgramId = getProgramId();
   const terms = getTerms();
 
-  const connection = new Connection("http://localhost:8899", "confirmed");
+  const connection = new Connection("https://api.testnet.solana.com", "confirmed");
+  //const connection = new Connection("http://localhost:8899", "confirmed");
   const escrowAccount = await connection.getAccountInfo(
     escrowStateAccountPubkey
   );
