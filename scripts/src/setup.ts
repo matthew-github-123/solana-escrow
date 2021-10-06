@@ -69,6 +69,11 @@ const setup = async () => {
   console.log(typeof adamPublicKey);
   console.log(typeof clientKeypair);
 
+  console.log(JSON.stringify(alicePublicKey));
+  console.log(JSON.stringify(bobPublicKey));
+  console.log(JSON.stringify(adamPublicKey));
+  console.log(JSON.stringify(clientPublicKey));
+
 const connection = new Connection("https://api.testnet.solana.com", "confirmed");
 //  const connection = new Connection("http://localhost:8899", "confirmed");
 //  console.log("Requesting SOL for Alice...");
