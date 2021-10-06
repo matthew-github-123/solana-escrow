@@ -45,6 +45,8 @@ const setupMint = async (
   writePublicKey(mint.publicKey, `mint_${name.toLowerCase()}`);
   console.log("mint public key ...");
   console.log(mint.publicKey);
+  console.log("mint object");
+  console.log(mint.object);
 
 //  console.log(`Creating Alice TokenAccount for ${name}...`);
   const aliceTokenAccount = await mint.createAccount(alicePublicKey);
