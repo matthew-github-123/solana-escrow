@@ -76,6 +76,9 @@ const setup = async () => {
   const testkey3 = JSON.parse(fs.readFileSync(`./keys/adam_pub.json`) as unknown as string);
   console.log(testkey3);
   console.log("-------------");
+  console.log("keypair values");
+  console.log("keypair.publicKey");
+  console.log("keypair.secretKey");
 
   console.log(typeof alicePublicKey);
   console.log(typeof bobPublicKey);
