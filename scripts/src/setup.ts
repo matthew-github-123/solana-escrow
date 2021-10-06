@@ -13,6 +13,8 @@ import {
   writePublicKey,
 } from "./utils";
 
+import * as fs from "fs";
+
 const createMint = (
   connection: Connection,
   { publicKey, secretKey }: Signer
@@ -67,10 +69,10 @@ const setup = async () => {
   console.log("-------------");
   const testkey = JSON.parse(fs.readFileSync(`./keys/alice_pub.json`) as unknown as string);
   console.log(testkey);
-  const testkey = JSON.parse(fs.readFileSync(`./keys/bob_pub.json`) as unknown as string);
-  console.log(testkey);
-  const testkey = JSON.parse(fs.readFileSync(`./keys/adam_pub.json`) as unknown as string);
-  console.log(testkey);
+  const testkey2 = JSON.parse(fs.readFileSync(`./keys/bob_pub.json`) as unknown as string);
+  console.log(testkey2);
+  const testkey3 = JSON.parse(fs.readFileSync(`./keys/adam_pub.json`) as unknown as string);
+  console.log(testkey3);
   console.log("-------------");
 
   console.log(typeof alicePublicKey);
