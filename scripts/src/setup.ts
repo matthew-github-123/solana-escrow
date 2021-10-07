@@ -43,6 +43,8 @@ const setupMint = async (
 //  console.log(`Creating Mint ${name}...`);
   const mint = await createMint(connection, clientKeypair);
   writePublicKey(mint.publicKey, `mint_${name.toLowerCase()}`);
+  console.log("clientKeypair ...");
+  console.log(clientKeypair);
   console.log("mint public key ...");
   console.log(mint.publicKey);
   console.log("mint object");
