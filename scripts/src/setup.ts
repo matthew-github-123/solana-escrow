@@ -75,7 +75,8 @@ const setup = async () => {
   const clientKeypair = getKeypair("id");
 
   console.log(alicePublicKey);
-  console.log(JSON.stringify(alicePublicKey));
+  const aliceString = console.log(JSON.stringify(alicePublicKey));
+  console.log(JSON.parse(aliceString));
   console.log(bobPublicKey);
   console.log("-------------");
   //buffer
