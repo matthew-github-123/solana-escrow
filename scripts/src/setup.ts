@@ -84,6 +84,8 @@ const setup = async () => {
   console.log(testkey05);
   const testkey = JSON.parse(fs.readFileSync(`./keys/alice_pub.json`) as unknown as string);
   console.log(testkey);
+  console.log("type of testkey ...");
+  console.log(typeof testkey);
   const testkey2 = JSON.parse(fs.readFileSync(`./keys/bob_pub.json`) as unknown as string);
   console.log(testkey2);
   const testkey3 = JSON.parse(fs.readFileSync(`./keys/adam_pub.json`) as unknown as string);
