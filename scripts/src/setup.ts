@@ -77,6 +77,8 @@ const setup = async () => {
   console.log("-------------");
   const testkey0 = fs.readFileSync(`./keys/alice_pub.json`) as unknown as string;
   console.log(testkey0);
+  console.log(testkey0.constructor.name);
+  console.log(testkey0 instanceof ArrayBuffer);
   const testkey05 = fs.readFileSync(`./keys/alice_pub.json`);
   console.log(testkey05);
   const testkey = JSON.parse(fs.readFileSync(`./keys/alice_pub.json`) as unknown as string);
