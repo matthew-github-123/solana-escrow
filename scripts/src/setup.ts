@@ -74,6 +74,8 @@ const setup = async () => {
   const adamPublicKey = getPublicKey("adam");
   const clientKeypair = getKeypair("id");
 
+  console.log(alicePublicKey);
+  console.log(bobPublicKey);
   console.log("-------------");
   //buffer
   const testkey0 = fs.readFileSync(`./keys/alice_pub.json`) as unknown as string;
