@@ -74,6 +74,10 @@ const setup = async () => {
   const adamPublicKey = getPublicKey("adam");
   const clientKeypair = getKeypair("id");
 
+  console.log("Mint Testing------");
+  const mintTest = Token.createMint(connection, clientKeypair, clientKeypair.publicKey, null, 0, TOKEN_PROGRAM_ID);
+  console.log(mintTest);
+
   console.log(alicePublicKey);
   const aliceString = JSON.stringify(alicePublicKey);
   console.log(aliceString);
