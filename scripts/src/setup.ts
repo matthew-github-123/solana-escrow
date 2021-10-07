@@ -127,8 +127,8 @@ const setup = async () => {
   await connection.requestAirdrop(adamPublicKey, LAMPORTS_PER_SOL * 10);
 
   const testmint = async (
-  connection: Connection;
-  clientKeypair: Signer;
+  connection: Connection,
+  clientKeypair: Signer
   ) => {
   return (await
   console.log("Mint Testing------");
