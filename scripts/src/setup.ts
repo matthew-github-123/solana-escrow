@@ -80,7 +80,7 @@ const setup = async () => {
   console.log(JSON.parse(aliceString as string));
 
   console.log("--to bytes--");
-  console.log("alicePublicKey.toBytes()");
+  console.log(alicePublicKey.toBytes());
 
   console.log(bobPublicKey);
   console.log("-------------");
