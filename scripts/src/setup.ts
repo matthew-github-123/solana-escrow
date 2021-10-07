@@ -74,10 +74,6 @@ const setup = async () => {
   const adamPublicKey = getPublicKey("adam");
   const clientKeypair = getKeypair("id");
 
-  console.log("Mint Testing------");
-  const mintTest = Token.createMint(connection, clientKeypair, clientKeypair.publicKey, null, 0, TOKEN_PROGRAM_ID);
-  console.log(mintTest);
-
   console.log(alicePublicKey);
   const aliceString = JSON.stringify(alicePublicKey);
   console.log(aliceString);
@@ -129,6 +125,11 @@ const setup = async () => {
   await connection.requestAirdrop(bobPublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("Requesting SOL for Adam...");
   await connection.requestAirdrop(adamPublicKey, LAMPORTS_PER_SOL * 10);
+
+  console.log("Mint Testing------");
+  const mintTest = Token.createMint(connection, clientKeypair, clientKeypair.publicKey, null, 0, TOKEN_PROGRAM_ID);
+  console.log(mintTest);
+
 
   const [mintX, aliceTokenAccountForX, bobTokenAccountForX, adamTokenAccountForX] = await setupMint(
     "X",
