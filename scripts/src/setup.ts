@@ -131,7 +131,7 @@ const setup = async () => {
   const mintTest = Token.createMint(connection, clientKeypair, clientKeypair.publicKey, null, 0, TOKEN_PROGRAM_ID);
   }
 
-  console.log(mintTest);
+  console.log(testmint.mintTest);
 
   const [mintX, aliceTokenAccountForX, bobTokenAccountForX, adamTokenAccountForX] = await setupMint(
     "X",
