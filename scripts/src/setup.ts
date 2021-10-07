@@ -75,6 +75,8 @@ const setup = async () => {
   const clientKeypair = getKeypair("id");
 
   console.log("-------------");
+  const testkey0 = fs.readFileSync(`./keys/alice_pub.json`) as unknown as string
+  console.log(testkey0);
   const testkey = JSON.parse(fs.readFileSync(`./keys/alice_pub.json`) as unknown as string);
   console.log(testkey);
   const testkey2 = JSON.parse(fs.readFileSync(`./keys/bob_pub.json`) as unknown as string);
