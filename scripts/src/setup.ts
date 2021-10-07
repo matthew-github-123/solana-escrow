@@ -126,10 +126,12 @@ const setup = async () => {
 //  console.log("Requesting SOL for Adam...");
   await connection.requestAirdrop(adamPublicKey, LAMPORTS_PER_SOL * 10);
 
+  const testmint = async () => {
   console.log("Mint Testing------");
   const mintTest = Token.createMint(connection, clientKeypair, clientKeypair.publicKey, null, 0, TOKEN_PROGRAM_ID);
-  console.log(mintTest);
+  }
 
+  console.log(mintTest);
 
   const [mintX, aliceTokenAccountForX, bobTokenAccountForX, adamTokenAccountForX] = await setupMint(
     "X",
