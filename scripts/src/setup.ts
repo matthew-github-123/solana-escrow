@@ -134,6 +134,7 @@ const setup = async () => {
   //) => {
   //return ( await Promise.all( [
   const mintTest = Token.createMint(connection, clientKeypair, clientKeypair.publicKey, null, 0, TOKEN_PROGRAM_ID);
+  console.log(mintTest);
 //]);
 //);
 //};
