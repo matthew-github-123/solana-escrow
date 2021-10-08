@@ -123,9 +123,8 @@ const setup = async () => {
 			console.log('Connection to cluster established:', rpcUrl, version);
 }
 
-const newConnection = await establishConnection() => (
-      return connection;
-);
+const newConnection = await establishConnection() => {};
+      //return connection;
 
     //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
  const connection = new Connection("http://localhost:8899", "confirmed");
