@@ -66,8 +66,7 @@ const setupMint = async (
 
   console.log("payer ...");
  console.log(JSON.stringify(mint.payer));
-  const payer = mint.payer.toBase58();
-  console.log(payer)
+    console.log("payer payer payer payer payer");
 
   console.log("mint object");
   console.log(mint);
