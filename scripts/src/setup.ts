@@ -141,7 +141,7 @@ async function establishTestnetConnection() {
 //establishTestnetConnection();
 //establishLocalConnection();
 
-establishTestnetConnection();
+//establishTestnetConnection();
 
 const connection = await establishTestnetConnection();
 
@@ -152,6 +152,8 @@ const connection = await establishTestnetConnection();
   //await newConnection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
 //  await testnetConnection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("---- passed -----");
+
+console.log("request airdrops");
 
   await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("Requesting SOL for Bob...");
