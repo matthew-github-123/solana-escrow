@@ -118,8 +118,8 @@ const setup = async () => {
 
   async function establishTestnetConnection(){
 			const rpcUrl = "https://api.testnet.solana.com";
-			const connection = new Connection(rpcUrl, 'confirmed');
-			const version = await connection.getVersion();
+			var testnetConnection = new Connection(rpcUrl, 'confirmed');
+			const version = await testnetConnection.getVersion();
 			console.log('Testnet Connection to cluster established:', rpcUrl, version);
 }
 
@@ -133,9 +133,9 @@ async function establishLocalConnection(){
 //establishTestnetConnection();
 establishLocalConnection();
 
-await establishTestnetConnection() => {
-     return connection;
-};
+establishTestnetConnection();
+
+console.log(testnetConnection);
 
     //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
  const connection = new Connection("http://localhost:8899", "confirmed");
