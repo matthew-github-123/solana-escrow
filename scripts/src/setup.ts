@@ -123,6 +123,8 @@ const setup = async () => {
 			console.log('Connection to cluster established:', rpcUrl, version);
 }
 
+establishConnection();
+
     //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
  const connection = new Connection("http://localhost:8899", "confirmed");
 //  console.log("Requesting SOL for Alice...");
