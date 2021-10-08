@@ -116,8 +116,17 @@ const setup = async () => {
   console.log(JSON.stringify(adamPublicKey));
   console.log(JSON.stringify(clientKeypair));
 
+
+ const connection = async function establishConnection(){
+  			const rpcUrl = "https://api.testnet.solana.com";
+  			connection = new solanaWeb3.Connection(rpcUrl, 'confirmed');
+  			const version = await connection.getVersion();
+  			console.log('Connection to cluster established:', rpcUrl, version);
+  }
+
+
 //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
-  const connection = new Connection("http://localhost:8899", "confirmed");
+//  const connection = new Connection("http://localhost:8899", "confirmed");
 //  console.log("Requesting SOL for Alice...");
   // some networks like the local network provide an airdrop function (mainnet of course does not)
   await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
