@@ -48,14 +48,21 @@ const setupMint = async (
   console.log("clientKeypair public key ...");
   console.log(clientKeypair.publicKey);
   console.log("mint public key ...");
+  console.log(JSON.stringify(mint.publicKey));
   console.log(mint.publicKey);
   //const mint_pub = JSON.stringify(mint.publicKey);
   const mint_pub_decode = mint.publicKey.toBase58();
   console.log(mint_pub_decode);
+
+  console.log("program id ...");
+  console.log(JSON.stringify(mint.programId));
   const mint_prog_id = mint.programId.toBase58();
   console.log(mint_prog_id);
+
+  console.log("associated prog id ...");
+ console.log(JSON.stringify(mint.associatedProgramId));
   const mint_assoc_prog = mint.associatedProgramId.toBase58();
-  console.log(mint_assoc_prog);
+  console.log(mint_assoc_prog)
   console.log("mint object");
   console.log(mint);
 
