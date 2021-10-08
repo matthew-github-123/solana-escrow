@@ -145,7 +145,8 @@ async function establishTestnetConnection() {
 
 const connection = await establishTestnetConnection();
 
-    //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
+new Connection("https://api.testnet.solana.com", "confirmed");
+console.log("test connect");
 // const connection = new Connection("http://localhost:8899", "confirmed");
 //  console.log("Requesting SOL for Alice...");
   // some networks like the local network provide an airdrop function (mainnet of course does not)
@@ -153,11 +154,11 @@ const connection = await establishTestnetConnection();
 //  await testnetConnection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("---- passed -----");
 
-console.log(connection);
-console.log("request airdrops");
-console.log(connection.requestAirdrop);
+//console.log(connection);
+//console.log("request airdrops");
+//console.log(connection.requestAirdrop);
 
-  await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
+  //await establishTestnetConnection().requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("Requesting SOL for Bob...");
   await connection.requestAirdrop(bobPublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("Requesting SOL for Adam...");
