@@ -137,7 +137,7 @@ const setup = async () => {
   console.log("----------------------");
   console.log("----------------------");
   console.log(mintTest.publicKey);
-  console.log(intTest);
+  console.log(mintTest);
   console.log("----------------------");
   console.log("----------------------");
 //]);
