@@ -128,15 +128,15 @@ const setup = async () => {
 
   console.log("Mint Testing------");
 
-  const testmint = async (
-  connection: Connection,
-  clientKeypair: Signer
-  ) => {
-  return ( await Promise.all( [
+  //const testmint = async (
+  //connection: Connection,
+  //clientKeypair: Signer
+  //) => {
+  //return ( await Promise.all( [
   const mintTest = Token.createMint(connection, clientKeypair, clientKeypair.publicKey, null, 0, TOKEN_PROGRAM_ID);
-]);
-);
-};
+//]);
+//);
+//};
 
   //console.log(testmint.mintTest);
 
