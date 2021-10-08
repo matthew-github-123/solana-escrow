@@ -155,6 +155,7 @@ const connection = await establishTestnetConnection();
 
 console.log(connection);
 console.log("request airdrops");
+console.log(connection.requestAirdrop);
 
   await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("Requesting SOL for Bob...");
