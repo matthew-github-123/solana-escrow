@@ -117,7 +117,7 @@ const setup = async () => {
   console.log(JSON.stringify(clientKeypair));
 
 
-  const connection = new Connection("https://api.testnet.solana.com", "confirmed");
+  const connection = new Connection("https://api.devnet.solana.com", "confirmed");
 //  const connection = new Connection("http://localhost:8899", "confirmed");
 //  console.log("Requesting SOL for Alice...");
   // some networks like the local network provide an airdrop function (mainnet of course does not)
