@@ -128,6 +128,7 @@ async function establishTestnetConnection() {
     const testnetConnection = new Connection(rpcUrl, 'confirmed');
     const version = await testnetConnection.getVersion();
     console.log('Testnet Connection to cluster established:', rpcUrl, version);
+    return testnetConnection;
 }
 
 async function establishLocalConnection(){
@@ -135,7 +136,6 @@ async function establishLocalConnection(){
     const connection = new Connection(rpcUrl, 'confirmed');
     const version = await connection.getVersion();
     console.log('Local Connection to cluster established:', rpcUrl, version);
-    return testnetConnection;
 }
 
 //establishTestnetConnection();
