@@ -50,7 +50,7 @@ const setupMint = async (
   console.log("mint public key ...");
   console.log(mint.publicKey);
   //const mint_pub = JSON.stringify(mint.publicKey);
-  const mint_pub_decode = mint.publicKey.tobase58();
+  const mint_pub_decode = mint.publicKey.toBase58();
   console.log(mint_pub_decode);
   console.log("mint object");
   console.log(mint);
