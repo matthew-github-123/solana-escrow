@@ -24,6 +24,7 @@ import {
 const alice = async () => {
   console.log("-----alice.ts-----");
   const escrowProgramId = getProgramId();
+  console.log("program id complete");
   const terms = getTerms();
 
   const aliceXTokenAccountPubkey = getPublicKey("alice_x");
