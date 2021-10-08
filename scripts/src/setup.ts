@@ -133,7 +133,7 @@ async function establishLocalConnection(){
 //establishTestnetConnection();
 establishLocalConnection();
 
-const newConnection = await establishTestnetConnection() => {
+establishTestnetConnection() => {
      return connection;
 };
 
