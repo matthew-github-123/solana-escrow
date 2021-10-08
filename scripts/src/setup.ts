@@ -123,7 +123,7 @@ const setup = async () => {
 			console.log('Connection to cluster established:', rpcUrl, version);
 }
 
-const newConnection = await establishConnection() => {
+const newConnection = await function establishConnection() => {
       return connection;
 };
 
