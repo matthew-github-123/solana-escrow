@@ -24,7 +24,6 @@ import {
 const alice = async () => {
   console.log("-----alice.ts-----");
   const escrowProgramId = getProgramId();
-  console.log("program id complete");
   const terms = getTerms();
 
   const aliceXTokenAccountPubkey = getPublicKey("alice_x");
@@ -33,8 +32,8 @@ const alice = async () => {
   const aliceKeypair = getKeypair("alice");
 
   const tempXTokenAccountKeypair = new Keypair();
-  const connection = new Connection("https://api.testnet.solana.com", "confirmed");
-//  const connection = new Connection("http://localhost:8899", "confirmed");
+  //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
+  const connection = new Connection("http://localhost:8899", "confirmed");
 //  console.log("creating temp account ...");
   const createTempTokenAccountIx = SystemProgram.createAccount({
     programId: TOKEN_PROGRAM_ID,
