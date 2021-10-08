@@ -153,6 +153,7 @@ const connection = await establishTestnetConnection();
 //  await testnetConnection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("---- passed -----");
 
+console.log(connection);
 console.log("request airdrops");
 
   await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
