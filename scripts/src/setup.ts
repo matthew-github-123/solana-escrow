@@ -143,7 +143,7 @@ establishLocalConnection();
 
 establishTestnetConnection();
 
-const testnetConnection = establishTestnetConnection();
+const testnetConnection = await establishTestnetConnection();
 
     //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
  const connection = new Connection("http://localhost:8899", "confirmed");
