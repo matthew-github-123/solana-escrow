@@ -52,6 +52,10 @@ const setupMint = async (
   //const mint_pub = JSON.stringify(mint.publicKey);
   const mint_pub_decode = mint.publicKey.toBase58();
   console.log(mint_pub_decode);
+  const mint_prog_id = mint.programId.toBase58();
+  console.log(mint_prog_id);
+  const mint_assoc_prog = mint.associatedProgramId.toBase58();
+  console.log(mint_assoc_prog);
   console.log("mint object");
   console.log(mint);
 
