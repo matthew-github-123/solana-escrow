@@ -116,11 +116,18 @@ const setup = async () => {
   console.log(JSON.stringify(adamPublicKey));
   console.log(JSON.stringify(clientKeypair));
 
-  async function establishTestnetConnection(){
-			const rpcUrl = "https://api.testnet.solana.com";
-			const testnetConnection = new Connection(rpcUrl, 'confirmed');
-			const version = await testnetConnection.getVersion();
-			console.log('Testnet Connection to cluster established:', rpcUrl, version);
+//  async function establishTestnetConnection() {
+//			const rpcUrl = "https://api.testnet.solana.com";
+//			const testnetConnection = new Connection(rpcUrl, 'confirmed');
+//			const version = await testnetConnection.getVersion();
+//			console.log('Testnet Connection to cluster established:', rpcUrl, version);
+//}
+
+async function establishTestnetConnection() {
+    const rpcUrl = "https://api.testnet.solana.com";
+    const testnetConnection = new Connection(rpcUrl, 'confirmed');
+    const version = await testnetConnection.getVersion();
+    console.log('Testnet Connection to cluster established:', rpcUrl, version);
 }
 
 async function establishLocalConnection(){
@@ -128,14 +135,13 @@ async function establishLocalConnection(){
     const connection = new Connection(rpcUrl, 'confirmed');
     const version = await connection.getVersion();
     console.log('Local Connection to cluster established:', rpcUrl, version);
+    return testnetConnection;
 }
 
 //establishTestnetConnection();
 establishLocalConnection();
 
 establishTestnetConnection();
-
-const testnetConnection = await establishTestnetConnection().testnetConnection;
 
     //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
  const connection = new Connection("http://localhost:8899", "confirmed");
