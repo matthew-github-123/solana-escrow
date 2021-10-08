@@ -118,12 +118,10 @@ const setup = async () => {
 
   async function establishConnection(){
 			const rpcUrl = "https://api.testnet.solana.com";
-			connection = new solanaWeb3.Connection(rpcUrl, 'confirmed');
+			const connection = new solanaWeb3.Connection(rpcUrl, 'confirmed');
 			const version = await connection.getVersion();
 			console.log('Connection to cluster established:', rpcUrl, version);
 }
-
-		const connection = establishConnection();
 
 
   //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
