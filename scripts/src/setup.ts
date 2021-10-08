@@ -123,13 +123,14 @@ const setup = async () => {
 //			console.log('Testnet Connection to cluster established:', rpcUrl, version);
 //}
 
-async function establishTestnetConnection() {
-    const rpcUrl = "https://api.testnet.solana.com";
-    const testnetConnection = new Connection(rpcUrl, 'confirmed');
-    const version = await testnetConnection.getVersion();
-    console.log('Testnet Connection to cluster established:', rpcUrl, version);
-    return testnetConnection;
-}
+//****************unlock
+//async function establishTestnetConnection() {
+//    const rpcUrl = "https://api.testnet.solana.com";
+//    const testnetConnection = new Connection(rpcUrl, 'confirmed');
+//    const version = await testnetConnection.getVersion();
+//    console.log('Testnet Connection to cluster established:', rpcUrl, version);
+//    return testnetConnection;
+//}
 
 //async function establishLocalConnection(){
 //    const rpcUrl = "http://localhost:8899";
@@ -143,11 +144,12 @@ async function establishTestnetConnection() {
 
 //establishTestnetConnection();
 
-const connection = await establishTestnetConnection();
+//*********unlock
+//const connection = await establishTestnetConnection();
 
-new Connection("https://api.testnet.solana.com", "confirmed");
-console.log("test connect");
-// const connection = new Connection("http://localhost:8899", "confirmed");
+//new Connection("https://api.testnet.solana.com", "confirmed");
+//console.log("test connect");
+ const connection = new Connection("http://localhost:8899", "confirmed");
 //  console.log("Requesting SOL for Alice...");
   // some networks like the local network provide an airdrop function (mainnet of course does not)
   //await newConnection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
@@ -158,7 +160,7 @@ console.log("test connect");
 //console.log("request airdrops");
 //console.log(connection.requestAirdrop);
 
-  //await establishTestnetConnection().requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
+  await connection.requestAirdrop(alicePublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("Requesting SOL for Bob...");
   await connection.requestAirdrop(bobPublicKey, LAMPORTS_PER_SOL * 10);
 //  console.log("Requesting SOL for Adam...");
