@@ -49,6 +49,8 @@ const setupMint = async (
   console.log(clientKeypair.publicKey);
   console.log("mint public key ...");
   console.log(mint.publicKey);
+  const mint_pub = JSON.stringify(mint.publicKey);
+  console.log(mint_pub);
   console.log("mint object");
   console.log(mint);
 
