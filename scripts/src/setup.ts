@@ -218,6 +218,9 @@ const setup = async () => {
     clientKeypair
   );
 //  console.log("Sending 50X to Alice's X TokenAccount...");
+  console.log("^^^^^^^^^^^^^^^^^^^^^Alice TOKEN ACCOUNT FOR X^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+  console.log(aliceTokenAccountForX);
+
   await mintX.mintTo(aliceTokenAccountForX, clientKeypair.publicKey, [], 50);
   await mintX.mintTo(bobTokenAccountForX, clientKeypair.publicKey, [], 10);
   await mintX.mintTo(adamTokenAccountForX, clientKeypair.publicKey, [], 40);
