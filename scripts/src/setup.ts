@@ -133,8 +133,8 @@ async function establishLocalConnection(){
 //establishTestnetConnection();
 establishLocalConnection();
 
-const newConnection = const establishTestnetConnection() => {
-     return newConnection;
+const newConnection = establishTestnetConnection() => {
+     return connection;
 };
 
     //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
