@@ -35,6 +35,12 @@ const alice = async () => {
   //const connection = new Connection("https://api.testnet.solana.com", "confirmed");
   const connection = new Connection("http://localhost:8899", "confirmed");
 //  console.log("creating temp account ...");
+
+console.log("creating token account ...");
+console.log(aliceKeypair.publicKey);
+console.log(tempXTokenAccountKeypair.publicKey);
+console.log("**********");
+
   const createTempTokenAccountIx = SystemProgram.createAccount({
     programId: TOKEN_PROGRAM_ID,
     space: AccountLayout.span,
