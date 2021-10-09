@@ -50,6 +50,9 @@ console.log("**********");
     fromPubkey: aliceKeypair.publicKey,
     newAccountPubkey: tempXTokenAccountKeypair.publicKey,
   });
+
+console.log(createTempTokenAccountIx);
+
 //  console.log("initialise temp account ...");
   const initTempAccountIx = Token.createInitAccountInstruction(
     TOKEN_PROGRAM_ID,
