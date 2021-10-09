@@ -60,6 +60,10 @@ console.log(createTempTokenAccountIx);
     tempXTokenAccountKeypair.publicKey,
     aliceKeypair.publicKey
   );
+
+console.log("initialise token account ...");
+console.log(initTempAccountIx);
+
 //  console.log("transfer token x to temp account ...");
   const transferXTokensToTempAccIx = Token.createTransferInstruction(
     TOKEN_PROGRAM_ID,
